@@ -21,6 +21,9 @@
             feta: '#F4FDF1',
             haze: '#01A369',
           },
+          animation: {
+            'spin-slow': 'spin 6s linear infinite',
+          }
         },
         fontFamily: {
           sans: ['Inter', 'sans-serif'],
@@ -469,6 +472,10 @@
     </div>
   </footer>
 
+  <button id="discButton" class="fixed bottom-5 left-5 w-14 outline-none">
+    <img src="images/disc-lwu.png" alt="Disc" class="w-full">
+  </button>
+
   <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -497,6 +504,20 @@
         scrollTop: position
       } /* speed */ );
     });
+
+    const audio = new Audio('musics/y2mate.com-Maher-Zain-Baraka-Allahu-Lakuma-Karaoke.mp3');
+    audio.loop = true;
+    const discButton = document.getElementById('discButton')
+    discButton.addEventListener('click', function () {
+      if (audio.paused) {
+        discButton.classList.add('animate-spin-slow');
+        audio.play();
+      } else {
+        discButton.classList.remove('animate-spin-slow');
+        audio.pause();
+      }
+    });
+
   </script>
 </body>
 </html>
